@@ -1,0 +1,18 @@
+name: Pylint Linter for Python
+description: Run pylint linter on given target or default.
+
+inputs:
+  target:
+    description: Target for pylint scan.
+    required: false
+    default: src/
+
+runs:
+  using: "composite"
+
+  steps:
+    - name: Pylint
+      shell: bash
+      run: |
+        source .venv/bin/activate
+        pylint ${{inputs.target}}
